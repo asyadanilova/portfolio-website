@@ -1,0 +1,197 @@
+.notFound {
+    min-height: 73vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0d0d0d 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.notFound::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.NotFound__container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.title {
+    font-size: 8rem;
+    font-weight: 900;
+    margin: 0 0 30px 0;
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    letter-spacing: -2px;
+    line-height: 0.9;
+}
+
+.message {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f8f9fa;
+    margin: 0 0 20px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.description {
+    font-size: 1.1rem;
+    color: rgba(248, 249, 250, 0.8);
+    margin: 0 0 40px 0;
+    line-height: 1.6;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 36px;
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    color: #1a1a1a !important;
+    text-decoration: none;
+    border: none;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.homeLink::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.homeLink:hover::before {
+    left: 100%;
+}
+
+.homeLink:hover {
+    background: linear-gradient(135deg, #f4d03f, #d4af37);
+    color: #1a1a1a !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+    text-decoration: none;
+}
+
+.homeLink:active,
+.homeLink:focus {
+    color: #1a1a1a !important;
+    text-decoration: none;
+    outline: none;
+}
+
+.homeIcon {
+    font-size: 18px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+        margin: 20px;
+        max-width: none;
+    }
+
+    .title {
+        font-size: 6rem;
+    }
+
+    .message {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .description {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .homeLink {
+        padding: 16px 28px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notFound {
+        padding: 20px 10px;
+    }
+
+    .container {
+        padding: 30px 15px;
+        border-radius: 24px;
+    }
+
+    .title {
+        font-size: 4.5rem;
+        margin-bottom: 20px;
+    }
+
+    .message {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+
+    .homeLink {
+        padding: 14px 24px;
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    .homeIcon {
+        font-size: 16px;
+    }
+}

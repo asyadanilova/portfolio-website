@@ -1,0 +1,285 @@
+{
+    "title": "Fast As Wind - Corporate Transportation",
+    "welcome": "Welcome to our service",
+    "description": "Professional transportation services with experienced drivers",
+    "contact": "Contact Us",
+    "language": "Language",
+    "greeting": "Hello, {{name}}!",
+    "itemCount_one": "You have {{count}} item",
+    "itemCount_other": "You have {{count}} items",
+    "orderSummary": "{{user}}, your order contains {{count}} items for a total of ${{total}}",
+    "logoAlt": "Faster than Wind company logo",
+    "mainMenuAriaLabel": "Main menu",
+    "nav": {
+        "about": "ABOUT",
+        "services": "SERVICES",
+        "fleet": "FLEET",
+        "drivers": "DRIVERS",
+        "vacancies": "VACANCIES",
+        "contact": "CONTACTS"
+    },
+    "openMobileMenu": "Open mobile menu",
+    "closeMobileMenu": "Close mobile menu",
+    "mobileMenuAriaLabel": "Mobile navigation menu",
+    "footer": {
+        "companyName": "LLP \"Faster than Wind\"",
+        "unp": "UNP 692217981",
+        "okpo": "OKPO 506885336000",
+        "serviceTitle": "We deliver with comfort 24/7",
+        "copyright": "© {{year}} LLP \"Faster than Wind\". All rights reserved."
+    },
+    "hero": {
+        "title": "Comfortable transport for your business",
+        "description": "Corporate transportation, transfers, car rental in Minsk and throughout Belarus",
+        "orderTransfer": "ORDER TRANSFER",
+        "callNow": "CALL NOW",
+        "feature24h": "24/7 Service",
+        "featureReliable": "Reliability",
+        "featureComfort": "Comfort"
+    },
+    "about": {
+        "title": "ABOUT COMPANY",
+        "paragraph1": "Faster than Wind is a professional corporate transfer service with our own fleet ranging from economy to premium class. We solve all business transportation tasks: guest transfers, employee transportation, corporate events. We also provide car rental services without a driver.",
+        "paragraph2": "Our fleet includes 40 modern cars: from practical Volkswagen Passat to luxurious Mercedes S-class. All drivers undergo multi-stage selection and regular training, guaranteeing safety, punctuality and impeccable service.",
+        "paragraph3": "We cooperate with Yandex.Taxi and A1 aggregators.",
+        "features": {
+            "quality": {
+                "title": "Quality",
+                "description": "We use only premium cars and carefully select drivers"
+            },
+            "punctuality": {
+                "title": "Punctuality",
+                "description": "All trips are performed exactly on schedule without delays"
+            },
+            "reliability": {
+                "title": "Reliability",
+                "description": "Full financial responsibility for each order"
+            }
+        }
+    },
+    "services": {
+        "title": "WE OFFER",
+        "subtitle1": "We perform the full range of tasks for corporate clients. We are ready to adapt each service to your specific needs and budget. We offer flexible solutions - from individual transfers to complete business transportation support.",
+        "subtitle2": "Most popular services:",
+        "employeeTransport": {
+            "title": "Employee Transportation",
+            "description": "We provide regular trips for your company employees",
+            "order": "Order"
+        },
+        "guestTransfer": {
+            "title": "Guest Transfer",
+            "description": "We will meet with a sign at the airport or station and help with luggage",
+            "order": "Order"
+        },
+        "businessEvents": {
+            "title": "Business Events",
+            "description": "We organize guest transportation to conferences, forums and exhibitions",
+            "order": "Order"
+        },
+        "intercityTrips": {
+            "title": "Intercity Trips",
+            "description": "We will deliver you comfortably to any point in Belarus",
+            "order": "Order"
+        },
+        "corporateEvents": {
+            "title": "Corporate Events & Holidays",
+            "description": "We will meet, deliver and take you away after the event",
+            "order": "Order"
+        },
+        "carRental": {
+            "title": "Car Rental",
+            "description": "We will provide a car for your needs: with a driver or for personal use",
+            "order": "Order"
+        }
+    },
+    "cars": {
+        "title": "OUR VEHICLES",
+        "subtitle": "Our fleet consists of more than 40 vehicles and includes brands such as Mercedes, BMW, Kia, Volkswagen, Skoda, Peugeot and others. The most popular models are below, but if you are looking for something specific - we will help you choose.",
+        "classes": {
+            "economy": "Economy",
+            "comfort": "Comfort",
+            "business": "Business",
+            "premium": "Premium"
+        },
+        "vehicles": {
+            "ladaVesta": "Lada Vesta",
+            "skodaRapid": "Skoda Rapid",
+            "peugeot308": "Peugeot 308",
+            "kiaK5": "Kia K5",
+            "bmw5Series": "BMW 5 Series G30",
+            "mercedesEClass": "Mercedes E-Class",
+            "mercedesSClass": "Mercedes S-Class",
+            "bmw7Series": "BMW 7 Series"
+        },
+        "order": "Order"
+    },
+    "drivers": {
+        "title": "OUR DRIVERS",
+        "description1": "Our company is proud of its drivers - true road professionals. These are not just employees, but reliable partners whom we trust like ourselves.",
+        "description2": "We have created a team of experts who combine driving skills with care for passenger comfort.",
+        "featuresTitle": "Each of our drivers:",
+        "features": {
+            "training": "Has passed thorough selection and training",
+            "experience": "Has many years of accident-free experience",
+            "standards": "Follows safety and service standards"
+        },
+        "teamTitle": "Meet part of our team:",
+        "drivers": {
+            "mikhail": "Mikhail",
+            "dmitry": "Dmitry",
+            "anna": "Anna",
+            "sergey": "Sergey",
+            "aleksey": "Aleksey"
+        },
+        "years": "years",
+        "rating": "rating"
+    },
+    "vacancy": {
+        "title": "JOIN OUR TEAM",
+        "description": "We are growing and inviting professionals to join our team! Stable work, comfortable conditions and an atmosphere where your work is valued. Join us - together we achieve more!",
+        "benefits": {
+            "registration": "Registry registration",
+            "employment": "Official employment",
+            "fleet": "Modern fleet",
+            "schedule": "Flexible work schedule",
+            "bonuses": "Corporate bonuses"
+        },
+        "applyButton": "APPLY FOR VACANCY"
+    },
+    "vacanciesHero": {
+        "title": "Work at \"Faster Than Wind\" Company",
+        "subtitle": "Become part of our team of professional drivers",
+        "applyButton": "APPLY NOW",
+        "logoAlt": "Work as a taxi driver"
+    },
+    "contacts": {
+        "title": "CONTACT US",
+        "form": {
+            "title": "Order Transfer",
+            "subtitle": "Fill out the form and we will contact you within 15 minutes",
+            "name": "Your name",
+            "phone": "Phone",
+            "service": "Service",
+            "message": "Message (optional)",
+            "submit": "SEND",
+            "submitButton": "Submit Request",
+            "services": {
+                "placeholder": "Select service",
+                "transfer": "Transfer",
+                "vacancy": "Driver vacancy",
+                "other": "Other"
+            }
+        },
+        "info": {
+            "title": "Contact Information",
+            "address": "Minsk, Tirazhnya str. 150, office 206",
+            "phone": {
+                "general": "+375 (29) 704-14-55",
+                "generalLabel": "general"
+            },
+            "email": "info@bvetra.by",
+            "social": {
+                "text": "Our social networks:",
+                "telegram": "Telegram",
+                "instagram": "Instagram",
+                "tiktok": "TikTok"
+            },
+            "hours": "Office hours from 9:00 to 17:00. Applications accepted 24/7"
+        }
+    },
+    "benefits": {
+        "title": "Why Choose Us",
+        "income": {
+            "title": "High Income",
+            "description": "From 2500 BYN per month with full employment"
+        },
+        "cars": {
+            "title": "New Vehicles",
+            "description": "Modern fleet with regular maintenance"
+        },
+        "employment": {
+            "title": "Official Employment",
+            "description": "Full social package and medical insurance"
+        },
+        "career": {
+            "title": "Career Growth",
+            "description": "Opportunity to become a senior driver or manager"
+        }
+    },
+    "requirements": {
+        "title": "Candidate Requirements",
+        "license": "Category B driving license (3+ years experience)",
+        "violations": "No serious traffic violations",
+        "experience": "Experience in passenger transportation is welcome",
+        "personality": "Politeness, responsibility, punctuality",
+        "appearance": "Pleasant appearance and neatness",
+        "imageAlt": "Work as a taxi driver"
+    },
+    "conditions": {
+        "title": "What We Offer",
+        "financial": {
+            "title": "Financial Terms",
+            "income": "Stable income from 2500 BYN/month",
+            "daily": "Daily payments",
+            "bonuses": "Bonuses for quality service",
+            "records": "Bonuses for trip records"
+        },
+        "work": {
+            "title": "Working Conditions",
+            "schedule": "Flexible work schedule",
+            "cars": "New comfortable vehicles",
+            "corporate": "Corporate service",
+            "support": "24/7 technical support"
+        },
+        "social": {
+            "title": "Social Package",
+            "employment": "Official employment",
+            "insurance": "Medical insurance",
+            "vacation": "Paid vacation",
+            "training": "Company-funded training"
+        }
+    },
+    "notFound": {
+        "title": "404",
+        "message": "Oops! Page not found.",
+        "description": "You may have followed an incorrect link or the page has been moved.",
+        "homeButton": "Go Home"
+    },
+    "Offer": {
+        "title": "Ready to join our team?",
+        "description": "Fill out the form and we will contact you within 24 hours to discuss cooperation details.",
+        "hrDepartment": "HR Department",
+        "address": "Minsk, Tirazhnaya str. 150, office 206",
+        "formTitle": "Submit Application",
+        "namePlaceholder": "Your name*",
+        "phonePlaceholder": "Phone*",
+        "experiencePlaceholder": "Work experience (years)",
+        "messagePlaceholder": "Tell us about yourself",
+        "submitButton": "Submit Application"
+    },
+    "Faq": {
+        "title": "Frequently Asked Questions",
+        "questions": {
+            "documents": {
+                "question": "What documents are required for employment?",
+                "answer": "Passport, category B driver's license, medical certificate, work book (if available). A criminal record certificate is also required."
+            },
+            "probation": {
+                "question": "Is there a probationary period?",
+                "answer": "The probationary period is 2 weeks, during which we evaluate your driving skills, knowledge of the city and adaptation to the team."
+            },
+            "vehicle": {
+                "question": "Is a vehicle provided?",
+                "answer": "Yes, we provide fully serviced vehicles from our fleet. Fuel, maintenance and insurance are covered by the company."
+            },
+            "schedule": {
+                "question": "What is the work schedule?",
+                "answer": "Flexible 24/7 work schedule. You can choose convenient shifts: day, night or mixed. Minimum 8 hours per day."
+            },
+            "payment": {
+                "question": "How is payment made?",
+                "answer": "Weekly payment to your card. System: fixed rate + percentage from orders + bonuses for quality work and customer reviews."
+            }
+        }
+    }
+}
