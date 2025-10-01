@@ -1,0 +1,212 @@
+.vacancy {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+.vacancy__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+
+.vacancy__background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/background/back-driver.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.vacancy__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.7);
+    z-index: -1;
+}
+
+.vacancy .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.vacancy__content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 400px;
+}
+
+.vacancy__info {
+    max-width: 600px;
+    padding: 40px;
+    background: rgba(26, 26, 26, 0.8);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.vacancy__title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 24px 0;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+}
+
+.vacancy__title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    border-radius: 2px;
+}
+
+.vacancy__description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin: 0 0 32px 0;
+}
+
+.vacancy__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+.vacancy__benefit {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.vacancy__benefit:last-child {
+    margin-bottom: 0;
+}
+
+.vacancy__benefit i {
+    color: #d4af37;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.vacancy__btn {
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.vacancy__btn.btn--primary {
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    color: #1a1a1a;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.vacancy__btn.btn--primary:hover {
+    background: linear-gradient(135deg, #c19b26, #e6c032);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+}
+
+.vacancy__btn.btn--primary:active {
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .vacancy .container {
+        padding: 60px 15px;
+    }
+
+    .vacancy__content {
+        justify-content: center;
+        min-height: 300px;
+    }
+
+    .vacancy__info {
+        max-width: 100%;
+        padding: 30px;
+        margin: 0 10px;
+    }
+
+    .vacancy__title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .vacancy__title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .vacancy__description {
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .vacancy__benefit {
+        font-size: 0.95rem;
+    }
+
+    .vacancy__btn {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vacancy__info {
+        padding: 24px;
+        margin: 0 5px;
+    }
+
+    .vacancy__title {
+        font-size: 1.6rem;
+    }
+
+    .vacancy__benefit {
+        gap: 12px;
+        font-size: 0.9rem;
+    }
+
+    .vacancy__benefit i {
+        font-size: 1rem;
+    }
+}

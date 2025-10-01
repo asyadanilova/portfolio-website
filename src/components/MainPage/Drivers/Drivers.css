@@ -1,0 +1,247 @@
+.drivers {
+    position: relative;
+    padding: 80px 0;
+    background: #ffffff;
+    color: #333;
+}
+
+.drivers .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.drivers__header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.drivers__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+}
+
+.drivers__title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    border-radius: 2px;
+}
+
+.drivers__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 80px;
+}
+
+.drivers__description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 24px;
+    text-align: justify;
+}
+
+.drivers__description p:last-child {
+    margin-bottom: 0;
+}
+
+.drivers__features {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #e9ecef;
+}
+
+.drivers__features-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 24px 0;
+}
+
+.drivers__features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.drivers__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.drivers__feature:last-child {
+    margin-bottom: 0;
+}
+
+.drivers__feature i {
+    color: #d4af37;
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+.drivers__feature span {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.drivers__team {
+    text-align: center;
+}
+
+.drivers__team-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 40px 0;
+}
+
+.drivers__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.driver-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.driver-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.driver-card__image-wrapper {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.driver-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.driver-card:hover .driver-card__image {
+    transform: scale(1.08);
+}
+
+.driver-card__content {
+    padding: 20px;
+    text-align: center;
+}
+
+.driver-card__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+}
+
+.driver-card__stats {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .drivers {
+        padding: 60px 0;
+    }
+
+    .drivers .container {
+        padding: 0 15px;
+    }
+
+    .drivers__title {
+        font-size: 2rem;
+    }
+
+    .drivers__header {
+        margin-bottom: 40px;
+    }
+
+    .drivers__content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .drivers__features {
+        padding: 30px;
+    }
+
+    .drivers__team-title {
+        font-size: 1.5rem;
+    }
+
+    .drivers__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .driver-card__image-wrapper {
+        height: 200px;
+    }
+
+    .driver-card__content {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .drivers__title {
+        font-size: 1.8rem;
+    }
+
+    .drivers__description p {
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .drivers__features {
+        padding: 24px;
+    }
+
+    .drivers__features-title {
+        font-size: 1.2rem;
+    }
+
+    .drivers__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .driver-card__name {
+        font-size: 1.1rem;
+    }
+}

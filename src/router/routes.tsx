@@ -1,6 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 import Layout from '@/pages/Layout/Layout';
 import NotFound from '@/pages/NotFound/NotFound';
+import Vacancies from '@/pages/Vacancies/Vacancies';
 
 export const routes: RouteObject[] = [
     {
@@ -18,6 +19,10 @@ export const routes: RouteObject[] = [
     {
         path: '/drivers',
         element: <Layout />,
+    },
+    {
+        path: '/vacancies',
+        element: <Vacancies />,
     },
     {
         path: '/contact',

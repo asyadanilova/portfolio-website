@@ -1,0 +1,223 @@
+.vacancies-requirements {
+    padding: 80px 0;
+    background:
+        linear-gradient(to right,
+            #2c2c2c 0%,
+            #2c2c2c 40%,
+            #2c2c2cfa 50%,
+            #2a2a2af2 58%,
+            #262626 65%,
+            #222222d9 72%,
+            #1e1e1ecc 78%,
+            #1a1a1abf 84%,
+            #161616b3 90%,
+            #12121299 96%,
+            transparent 100%),
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url('/drivers/driver-vacancy.webp') no-repeat right center;
+    background-size: auto, 35% 100%, 35% 100%;
+    background-position: left, right center, right center;
+    position: relative;
+    color: white;
+}
+
+.vacancies-requirements::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(244, 208, 63, 0.05) 0%, transparent 60%);
+    z-index: 1;
+}
+
+.vacancies-requirements .container {
+    position: relative;
+    z-index: 2;
+}
+
+.requirements__title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 40px;
+    text-align: left;
+    position: relative;
+}
+
+.requirements__title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #d4af37 0%, #f4d03f 100%);
+    margin: 16px 0 0;
+    border-radius: 2px;
+}
+
+.requirements-content {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 40px;
+    margin-left: 10%;
+    margin-right: auto;;
+}
+
+.requirements-info {
+    max-width: 650px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    padding: 50px 45px;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.requirement-item:hover {
+    border-left-color: #d4af37;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.requirement-icon {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.requirement-item:hover .requirement-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+}
+
+.requirement-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.requirement-item:hover .requirement-text {
+    color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+    .requirements-content {
+        padding: 0 40px;
+    }
+
+    .vacancies-requirements {
+        background-size: auto, auto, 70% 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .vacancies-requirements {
+        background: #2c2c2c;
+        padding: 60px 0;
+    }
+
+    .requirements-content {
+        justify-content: center;
+        padding: 0 20px;
+    }
+
+    .requirements-info {
+        max-width: 100%;
+        padding: 35px 30px;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .requirements__title {
+        text-align: center;
+    }
+
+    .requirements__title::after {
+        margin: 16px auto 0;
+    }
+
+    .requirements-list {
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .requirement-item {
+        padding: 14px 18px;
+        gap: 12px;
+    }
+
+    .requirement-item:hover {
+        transform: translateX(4px);
+    }
+}
+
+@media (max-width: 480px) {
+    .vacancies-requirements {
+        padding: 50px 0;
+    }
+
+    .requirements-content {
+        padding: 0 15px;
+    }
+
+    .requirements-info {
+        padding: 30px 25px;
+        border-radius: 16px;
+    }
+
+    .requirements-list {
+        gap: 12px;
+    }
+
+    .requirement-item {
+        padding: 12px 16px;
+        gap: 10px;
+    }
+
+    .requirement-icon {
+        font-size: 1.1rem;
+    }
+
+    .requirement-text {
+        font-size: 0.95rem;
+    }
+
+    .requirements__title::after {
+        width: 60px;
+        margin-top: 12px;
+    }
+}

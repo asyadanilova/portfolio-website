@@ -6,14 +6,17 @@ import './Cars.css';
 const Cars: React.FC = () => {
     const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedCar, setSelectedCar] = useState<{ name: string; class: string }>({ name: '', class: '' });
 
     const handleOrderClick = (car: string, carClass: string): void => {
         console.log(`Ordering car: ${car} (${carClass})`);
+        setSelectedCar({ name: car, class: carClass });
         setIsModalOpen(true);
     };
 
     const handleCloseModal = (): void => {
         setIsModalOpen(false);
+        setSelectedCar({ name: '', class: '' });
     };
 
     return (
@@ -213,6 +216,8 @@ const Cars: React.FC = () => {
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
                 preselectedService="transfer"
+                restrictedServices={['transfer']}
+                contextInfo={selectedCar.name ? `Interested in: ${selectedCar.name} (${selectedCar.class})` : undefined}
             />
         </section>)
 }
