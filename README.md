@@ -24,3 +24,4 @@ Clone the project
 - Многоязычность (Русский, Английский)
 - Форма обратной связи
 - SPA (Single Page Application) с использованием React Router
+- Интеграция с Bitrix24
