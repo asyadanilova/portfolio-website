@@ -13,8 +13,11 @@ dist-ssr
 *.local
 .env
 .env.local
-.env.production
+.env.development.local
+.env.test.local
+.env.production.local
 
+# Backend environment file with sensitive credentials
 backend/.env
 
 # Editor directories and files
