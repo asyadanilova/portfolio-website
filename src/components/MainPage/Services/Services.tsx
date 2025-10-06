@@ -6,14 +6,17 @@ import './Services.css';
 const Services: React.FC = () => {
     const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedService, setSelectedService] = useState<string>('');
 
     const handleOrderClick = (service: string): void => {
         console.log(`Ordering service: ${service}`);
+        setSelectedService(service);
         setIsModalOpen(true);
     };
 
     const handleCloseModal = (): void => {
         setIsModalOpen(false);
+        setSelectedService('');
     };
 
     return (
@@ -168,6 +171,8 @@ const Services: React.FC = () => {
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
                 preselectedService="transfer"
+                restrictedServices={['transfer']}
+                contextInfo={selectedService ? `Interested in: ${selectedService}` : undefined}
             />
         </section>
     )

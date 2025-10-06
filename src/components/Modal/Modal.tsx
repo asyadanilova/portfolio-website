@@ -6,9 +6,11 @@ interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
     preselectedService?: string;
+    restrictedServices?: string[];
+    contextInfo?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, preselectedService }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, preselectedService, restrictedServices, contextInfo }) => {
     useEffect(() => {
         const handleEscapeKey = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
@@ -41,7 +43,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, preselectedService }) =>
                 <button className="modal-close" onClick={onClose} aria-label="Close modal">
                     <i className="fas fa-times"></i>
                 </button>
-                <Form preselectedService={preselectedService} />
+                <Form preselectedService={preselectedService} restrictedServices={restrictedServices} contextInfo={contextInfo} />
             </div>
         </div>
     );

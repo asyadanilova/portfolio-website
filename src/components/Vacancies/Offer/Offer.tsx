@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import Form from '../../Form/Form';
 import './Offer.css';
 
 const Offer: React.FC = () => {
@@ -19,47 +20,7 @@ const Offer: React.FC = () => {
                         </div>
                     </div>
                     <div className="form-content">
-                        <form id="vacancyForm" className="vacancy-form">
-                            <h3>{t('Offer.formTitle')}</h3>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    id="vacancy-name"
-                                    name="name"
-                                    placeholder={t('Offer.namePlaceholder')}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="tel"
-                                    id="vacancy-phone"
-                                    name="phone"
-                                    placeholder={t('Offer.phonePlaceholder')}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="number"
-                                    id="vacancy-exp"
-                                    name="experience"
-                                    placeholder={t('Offer.experiencePlaceholder')}
-                                    min="0"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <textarea
-                                    id="vacancy-message"
-                                    name="message"
-                                    placeholder={t('Offer.messagePlaceholder')}
-                                    rows={4}
-                                ></textarea>
-                            </div>
-                            <button type="submit" className="btn btn--form">
-                                {t('Offer.submitButton')}
-                            </button>
-                        </form>
+                        <Form preselectedService="vacancy" />
                     </div>
                 </div>
             </div>

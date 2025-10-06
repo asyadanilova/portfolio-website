@@ -156,10 +156,11 @@
         "title": "CONTACT US",
         "form": {
             "title": "Order Transfer",
-            "subtitle": "Fill out the form and we will contact you within 15 minutes",
+            "subtitle": "Fill out the form and we will contact you shortly",
             "name": "Your name",
             "phone": "Phone",
             "service": "Service",
+            "workExperience": "Work experience (years)",
             "message": "Message (optional)",
             "submit": "SEND",
             "submitButton": "Submit Request",
@@ -168,6 +169,23 @@
                 "transfer": "Transfer",
                 "vacancy": "Driver vacancy",
                 "other": "Other"
+            },
+            "validation": {
+                "nameRequired": "Name is required",
+                "nameMinLength": "Name must be at least 2 characters long",
+                "phoneRequired": "Phone number is required",
+                "phoneInvalid": "Phone number should not contain spaces or special characters",
+                "serviceRequired": "Please select a service",
+                "workExperienceRequired": "Work experience is required",
+                "workExperienceInvalid": "Please enter a valid number of years"
+            },
+            "submitting": "Submitting...",
+            "success": {
+                "bitrix": "Your request has been successfully sent to our CRM system. We will contact you shortly!",
+                "local": "Your request has been saved locally. We will process it as soon as possible."
+            },
+            "error": {
+                "submission": "There was an error submitting your request. Please try again or contact us directly."
             }
         },
         "info": {
