@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+import express, { json } from 'express';
+import cors from 'cors';
+import { join } from 'path';
+require('dotenv').config({ path: join(__dirname, '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -13,9 +13,9 @@ app.use(cors({
         'http://localhost:5175'
     ]
 }));
-app.use(express.json());
+app.use(json());
 
-const rateLimit = require('express-rate-limit');
+import rateLimit from 'express-rate-limit';
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 5,
@@ -53,7 +53,7 @@ app.post('/api/submit-form', limiter, async (req, res) => {
         }
 
         if (message) {
-            lead.COMMENTS = `Message: ${message}\n\nSubmitted: ${new Date().toISOString()}\nLanguage: ${language}`;
+            lead.COMMENTS = `Сообщение: ${message}\n\nОтправлено: ${new Date().toISOString()}\nЯзык: ${language}`;
         }
 
         const bitrixResponse = await fetch(`${process.env.BITRIX24_WEBHOOK_URL}/crm.lead.add.json`, {
