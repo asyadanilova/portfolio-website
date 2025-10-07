@@ -217,7 +217,7 @@ const Cars: React.FC = () => {
                 onClose={handleCloseModal}
                 preselectedService="transfer"
                 restrictedServices={['transfer']}
-                contextInfo={selectedCar.name ? `Interested in: ${selectedCar.name} (${selectedCar.class})` : undefined}
+                contextInfo={selectedCar.name ? `Требуется: ${selectedCar.name} (${selectedCar.class})` : undefined}
             />
         </section>)
 }

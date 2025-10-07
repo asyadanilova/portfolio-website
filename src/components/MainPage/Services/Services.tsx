@@ -172,7 +172,7 @@ const Services: React.FC = () => {
                 onClose={handleCloseModal}
                 preselectedService="transfer"
                 restrictedServices={['transfer']}
-                contextInfo={selectedService ? `Interested in: ${selectedService}` : undefined}
+                contextInfo={selectedService ? `Выбранный сервис: ${selectedService}` : undefined}
             />
         </section>
     )

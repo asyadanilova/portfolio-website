@@ -55,7 +55,6 @@ class Bitrix24Service {
         }
 
         try {
-            // Send data to your secure backend instead of directly to Bitrix24
             const response = await fetch(`${this.backendApiUrl}/submit-form`, {
                 method: 'POST',
                 headers: {
