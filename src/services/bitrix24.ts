@@ -21,11 +21,11 @@ export interface FormSubmissionData {
 }
 
 class Bitrix24Service {
-    private bitrixWebhookUrl: string;
+    private backendApiUrl: string;
     private readonly STORAGE_KEY = 'portfolio_form_submissions';
 
     constructor() {
-        this.bitrixWebhookUrl = import.meta.env.VITE_BITRIX24_WEBHOOK_URL || '';
+        this.backendApiUrl = import.meta.env.VITE_BACKEND_API_URL || 'http://localhost:3001/api';
     }
     saveToLocalStorage(data: FormSubmissionData): void {
         try {
@@ -48,72 +48,46 @@ class Bitrix24Service {
         }
     }
 
-    private transformToBitrixLead(data: FormSubmissionData): BitrixLead {
-        const serviceMapping: Record<string, string> = {
-            'transfer': 'Transfer Service',
-            'vacancy': 'Job Application',
-            'other': 'Other Service'
-        };
-
-        const lead: BitrixLead = {
-            TITLE: `New ${serviceMapping[data.service] || 'Contact'} - ${data.name}`,
-            NAME: data.name,
-            PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
-            SOURCE_ID: 'WEB',
-            SOURCE_DESCRIPTION: 'BVetraWebsite Form',
-            UF_CRM_SERVICE_TYPE: data.service
-        };
-
-        if (data.workExperience) {
-            lead.UF_CRM_1759751441376 = data.workExperience;
-        }
-
-        if (data.message) {
-            lead.COMMENTS = `Message: ${data.message}\n\nSubmitted: ${data.timestamp}\nLanguage: ${data.language}`;
-        }
-
-        return lead;
-    }
-
     async sendToBitrix24(data: FormSubmissionData): Promise<boolean> {
-        if (!this.bitrixWebhookUrl) {
-            console.warn('Bitrix24 webhook URL not configured');
+        if (!this.backendApiUrl) {
+            console.warn('Backend API URL not configured');
             return false;
         }
 
         try {
-            const lead = this.transformToBitrixLead(data);
-            const apiUrl = this.bitrixWebhookUrl.includes('crm.lead.add.json')
-                ? this.bitrixWebhookUrl
-                : `${this.bitrixWebhookUrl}/crm.lead.add.json`;
-
-            const response = await fetch(apiUrl, {
+            // Send data to your secure backend instead of directly to Bitrix24
+            const response = await fetch(`${this.backendApiUrl}/submit-form`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    fields: lead
+                    name: data.name,
+                    phone: data.phone,
+                    service: data.service,
+                    workExperience: data.workExperience,
+                    message: data.message,
+                    language: data.language
                 })
             });
 
             if (!response.ok) {
                 const errorText = await response.text();
-                console.error('Bitrix24 error response:', errorText);
+                console.error('Backend API error response:', errorText);
                 throw new Error(`HTTP error! status: ${response.status}, response: ${errorText}`);
             }
 
             const result = await response.json();
-            console.log('Bitrix24 response:', result);
+            console.log('Backend API response:', result);
 
-            if (result.error) {
-                throw new Error(`Bitrix24 API error: ${result.error_description || result.error}`);
+            if (!result.success) {
+                throw new Error(`Backend API error: ${result.error || 'Unknown error'}`);
             }
 
-            console.log('Successfully sent to Bitrix24:', result);
+            console.log('Successfully sent via backend API:', result);
             return true;
         } catch (error) {
-            console.error('Error sending to Bitrix24:', error);
+            console.error('Error sending via backend API:', error);
             return false;
         }
     }
