@@ -135,39 +135,80 @@
     color: #ffffff;
 }
 
-@media (max-width: 1024px) {
-    .requirements-content {
-        padding: 0 40px;
-    }
-
+/* Laptop styles (1200px - 1440px) */
+@media (min-width: 1200px) and (max-width: 1440px) {
     .vacancies-requirements {
-        background-size: auto, auto, 70% 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .vacancies-requirements {
-        background: #2c2c2c;
-        padding: 60px 0;
-    }
-
-    .requirements-content {
-        justify-content: center;
-        padding: 0 20px;
-    }
-
-    .requirements-info {
-        max-width: 100%;
-        padding: 35px 30px;
-        background: rgba(0, 0, 0, 0.5);
+        padding: 50px 0;
     }
 
     .requirements__title {
-        text-align: center;
+        font-size: clamp(2.1rem, 3.2vw, 2.6rem);
+        margin-bottom: 38px;
     }
 
     .requirements__title::after {
-        margin: 16px auto 0;
+        width: 75px;
+        margin-top: 15px;
+    }
+
+    .requirements-content {
+        margin-top: 38px;
+        margin-left: 8%;
+    }
+
+    .requirements-info {
+        max-width: 620px;
+        padding: 45px 40px;
+        border-radius: 18px;
+    }
+
+    .requirements-list {
+        gap: 16px;
+        margin-top: 22px;
+    }
+
+    .requirement-item {
+        padding: 15px 19px;
+        gap: 14px;
+        border-radius: 11px;
+    }
+
+    .requirement-icon {
+        font-size: 1.25rem;
+    }
+
+    .requirement-text {
+        font-size: 0.98rem;
+    }
+}
+
+/* Large tablet styles (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .vacancies-requirements {
+        padding: 70px 0;
+        background-size: auto, 45% 100%, 45% 100%;
+    }
+
+    .requirements__title {
+        font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+        margin-bottom: 35px;
+    }
+
+    .requirements__title::after {
+        width: 70px;
+        margin-top: 14px;
+    }
+
+    .requirements-content {
+        margin-top: 35px;
+        margin-left: 6%;
+        padding: 0 30px;
+    }
+
+    .requirements-info {
+        max-width: 580px;
+        padding: 42px 38px;
+        border-radius: 17px;
     }
 
     .requirements-list {
@@ -177,35 +218,122 @@
 
     .requirement-item {
         padding: 14px 18px;
+        gap: 13px;
+        border-radius: 10px;
+    }
+
+    .requirement-icon {
+        font-size: 1.2rem;
+    }
+
+    .requirement-text {
+        font-size: 0.96rem;
+    }
+}
+
+/* Small tablet styles (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .vacancies-requirements {
+        padding: 65px 0;
+        background: #2c2c2c;
+    }
+
+    .requirements__title {
+        font-size: clamp(1.8rem, 3.6vw, 2.2rem);
+        margin-bottom: 32px;
+        text-align: center;
+    }
+
+    .requirements__title::after {
+        width: 65px;
+        margin: 14px auto 0;
+    }
+
+    .requirements-content {
+        justify-content: center;
+        margin-top: 32px;
+        margin-left: auto;
+        padding: 0 25px;
+    }
+
+    .requirements-info {
+        max-width: 100%;
+        padding: 38px 32px;
+        background: rgba(0, 0, 0, 0.55);
+        border-radius: 16px;
+    }
+
+    .requirements-list {
+        gap: 14px;
+        margin-top: 18px;
+    }
+
+    .requirement-item {
+        padding: 13px 17px;
         gap: 12px;
+        border-radius: 10px;
     }
 
     .requirement-item:hover {
         transform: translateX(4px);
     }
+
+    .requirement-icon {
+        font-size: 1.15rem;
+    }
+
+    .requirement-text {
+        font-size: 0.94rem;
+    }
 }
+
+/* Mobile styles (max-width: 480px) */
 
 @media (max-width: 480px) {
     .vacancies-requirements {
-        padding: 50px 0;
+        padding: 0;
+        background: #2c2c2c;
+    }
+
+    .requirements__title {
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .requirements__title::after {
+        width: 60px;
+        margin: 12px auto 0;
     }
 
     .requirements-content {
-        padding: 0 15px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: center;
     }
 
     .requirements-info {
         padding: 30px 25px;
-        border-radius: 16px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+        max-width: 100%;
     }
 
     .requirements-list {
         gap: 12px;
+        margin-top: 18px;
     }
 
     .requirement-item {
         padding: 12px 16px;
         gap: 10px;
+        border-radius: 8px;
+    }
+
+    .requirement-item:hover {
+        transform: translateX(3px);
     }
 
     .requirement-icon {
@@ -214,10 +342,5 @@
 
     .requirement-text {
         font-size: 0.95rem;
-    }
-
-    .requirements__title::after {
-        width: 60px;
-        margin-top: 12px;
     }
 }

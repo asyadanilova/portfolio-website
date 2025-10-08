@@ -116,6 +116,13 @@
   margin: 0;
 }
 
+@media (max-width: 1023px) {
+  .about__features {
+    grid-template-columns: 3fr;
+    gap: 24px;
+  }
+}
+
 @media (max-width: 768px) {
   .about {
     padding: 60px 0;

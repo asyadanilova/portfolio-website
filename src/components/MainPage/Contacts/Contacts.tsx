@@ -13,7 +13,7 @@ const Contacts: React.FC = () => {
 
                 <div className="contact__wrapper">
                     <div className="contact__form">
-                        <Form />
+                        <Form preselectedService="transfer" />
                     </div>
 
                     <aside className="contact__info" aria-labelledby="info-heading">

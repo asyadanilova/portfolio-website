@@ -1,7 +1,17 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+/* eslint-disable no-undef */
+import express from 'express';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenv.config({ path: join(__dirname, '.env') });
+
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,12 +20,12 @@ app.use(cors({
     origin: [
         process.env.FRONTEND_URL || 'http://localhost:5173',
         'http://localhost:5174',
-        'http://localhost:5175'
+        'http://localhost:5175',
+        'https://bvetra.netlify.app'
     ]
 }));
 app.use(express.json());
 
-const rateLimit = require('express-rate-limit');
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 5,

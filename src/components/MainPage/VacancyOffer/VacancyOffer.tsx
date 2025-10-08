@@ -6,6 +6,10 @@ import './VacancyOffer.css';
 const VacancyOffer: React.FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const goToPage = ()  => {
+        navigate('/vacancies');
+        window.scrollTo(0, 0);
+    }
 
     return (
         <section id="vacancies" className="vacancy">
@@ -43,7 +47,7 @@ const VacancyOffer: React.FC = () => {
 
                         <button
                             className="vacancy__btn btn btn--primary btn--large"
-                            onClick={() => navigate('/vacancies')}
+                            onClick={goToPage}
                         >
                             {t('vacancy.applyButton')}
                         </button>

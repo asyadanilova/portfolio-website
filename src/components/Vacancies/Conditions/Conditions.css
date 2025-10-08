@@ -199,60 +199,177 @@
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
 }
 
-@media (max-width: 768px) {
+/* Laptop styles (1200px - 1440px) */
+@media (min-width: 1200px) and (max-width: 1440px) {
     .vacancies-conditions {
-        padding: 80px 0;
+        padding: 45px 0;
+        background: #2c2c2c;
     }
 
     .vacancies-conditions .container {
-        padding: 0 25px;
+        padding: 0 50px;
     }
 
     .conditions__title {
-        margin-bottom: 40px;
-    }
-
-    .conditions__title::after {
-        width: 80px;
-        margin-top: 15px;
+        font-size: clamp(2.4rem, 3.5vw, 2.8rem);
+        margin-bottom: 55px;
     }
 
     .conditions-grid {
-        gap: 30px;
-        margin-top: 40px;
-        grid-template-columns: 1fr;
+        gap: 35px;
+        margin-top: 55px;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
 
     .condition-card {
-        padding: 35px 30px;
+        padding: 38px 32px;
+        border-radius: 18px;
+    }
+
+    .condition-card__icon {
+        font-size: 3.3rem;
+        margin-bottom: 22px;
+        height: 75px;
+    }
+
+    .condition-card__title {
+        font-size: 1.45rem;
+        margin-bottom: 28px;
+    }
+
+    .condition-card__item {
+        font-size: 0.98rem;
+        padding: 11px 0;
+        padding-left: 24px;
+    }
+}
+
+/* Large tablet styles (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .vacancies-conditions {
+        padding: 85px 0;
+        background: #2c2c2c;
+    }
+
+    .vacancies-conditions .container {
+        padding: 0 35px;
+    }
+
+    .conditions__title {
+        font-size: clamp(2.1rem, 3.8vw, 2.6rem);
+        margin-bottom: 50px;
+    }
+
+    .conditions__title::after {
+        width: 90px;
+        margin-top: 18px;
+    }
+
+    .conditions-grid {
+        gap: 32px;
+        margin-top: 50px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-self: center;
+    }
+
+    .condition-card {
+        padding: 36px 30px;
+        border-radius: 17px;
+    }
+
+    .condition-card__icon {
+        font-size: 3.2rem;
+        margin-bottom: 23px;
+        height: 72px;
+    }
+
+    .condition-card__title {
+        font-size: 1.42rem;
+        margin-bottom: 27px;
+    }
+
+    .condition-card__item {
+        font-size: 0.96rem;
+        padding: 10px 0;
+        padding-left: 23px;
+    }
+}
+
+/* Small tablet styles (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .vacancies-conditions {
+        padding: 75px 0;
+        background: #2c2c2c;
+    }
+
+    .vacancies-conditions .container {
+        padding: 0 30px;
+    }
+
+    .conditions__title {
+        font-size: clamp(1.9rem, 4.2vw, 2.4rem);
+        margin-bottom: 45px;
+    }
+
+    .conditions__title::after {
+        width: 85px;
+        margin-top: 16px;
+    }
+
+    .conditions-grid {
+        gap: 28px;
+        margin-top: 45px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        justify-self: center;
+    }
+
+    .condition-card {
+        padding: 34px 28px;
         border-radius: 16px;
     }
 
     .condition-card__icon {
         font-size: 3rem;
-        margin-bottom: 20px;
-        height: 70px;
+        margin-bottom: 21px;
+        height: 68px;
     }
 
     .condition-card__title {
-        font-size: 1.4rem;
-        margin-bottom: 25px;
+        font-size: 1.38rem;
+        margin-bottom: 26px;
     }
 
     .condition-card__item {
-        font-size: 0.95rem;
+        font-size: 0.94rem;
         padding: 10px 0;
         padding-left: 22px;
     }
 }
 
+/* Mobile styles (max-width: 480px) */
 @media (max-width: 480px) {
     .vacancies-conditions {
         padding: 60px 0;
+        background: #2c2c2c;
     }
 
     .vacancies-conditions .container {
         padding: 0 20px;
+    }
+
+    .conditions__title {
+        margin-bottom: 35px;
+    }
+
+    .conditions__title::after {
+        width: 70px;
+        margin-top: 12px;
+    }
+
+    .conditions-grid {
+        gap: 25px;
+        margin-top: 35px;
+        grid-template-columns: 1fr;
     }
 
     .condition-card {
@@ -262,15 +379,18 @@
 
     .condition-card__icon {
         font-size: 2.5rem;
+        margin-bottom: 18px;
         height: 60px;
     }
 
     .condition-card__title {
         font-size: 1.3rem;
+        margin-bottom: 22px;
     }
 
     .condition-card__item {
         font-size: 0.9rem;
+        padding: 9px 0;
         padding-left: 20px;
     }
 }

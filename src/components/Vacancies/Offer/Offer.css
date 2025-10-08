@@ -225,26 +225,194 @@
     transform: translateY(0);
 }
 
-@media (max-width: 1024px) {
+/* Laptop styles (1200px - 1440px) */
+@media (min-width: 1200px) and (max-width: 1440px) {
+    .vacancy-form-section {
+        padding: 90px 0;
+        background: #2c2c2c;
+    }
+
+    .vacancy-form-section .container {
+        width: 88%;
+    }
+
     .form-container {
-        gap: 40px;
-        padding: 50px 40px;
+        gap: 55px;
+        padding: 55px 45px;
+        border-radius: 23px;
     }
 
     .form-info {
-        padding-right: 20px;
+        padding-right: 35px;
+    }
+
+    .form-info h2 {
+        font-size: clamp(2.1rem, 3.2vw, 2.6rem);
+        text-align: center;
+        margin-bottom: 23px;
+    }
+
+    .form-info h2::after {
+        width: 175px;
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-info p {
+        font-size: 1.05rem;
+        margin-bottom: 18px;
+    }
+
+    .contact-details {
+        margin-top: 38px;
+        padding: 28px;
+        border-radius: 18px;
+    }
+
+    .contact-details p {
+        margin-bottom: 14px;
+        font-size: 0.98rem;
+        gap: 11px;
+    }
+
+    .vacancy-form {
+        padding: 38px 33px;
+        border-radius: 18px;
+    }
+
+    .vacancy-form h3 {
+        font-size: 1.75rem;
+        margin-bottom: 28px;
+    }
+
+    .vacancy-form h3::after {
+        width: 58px;
+        margin-top: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 23px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 15px 19px;
+        font-size: 0.98rem;
+        border-radius: 11px;
+    }
+
+    .form-group textarea {
+        min-height: 115px;
+    }
+
+    .btn--form {
+        padding: 17px 28px;
+        font-size: 1.05rem;
+        border-radius: 11px;
     }
 }
 
-@media (max-width: 768px) {
+/* Large tablet styles (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
     .vacancy-form-section {
-        padding: 80px 0;
+        padding: 0.8rem;
+        background: #2c2c2c;
+    }
+
+    .vacancy-form-section .container {
+        width: 92%;
+    }
+
+    .form-container {
+        gap: 50px;
+        padding: 50px 42px;
+        border-radius: 22px;
+    }
+
+    .form-info {
+        padding-right: 30px;
+    }
+
+    .form-info h2 {
+        font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+        margin-bottom: 22px;
+    }
+
+    .form-info h2::after {
+        width: 70px;
+        margin-top: 14px;
+    }
+
+    .form-info p {
+        font-size: 1.02rem;
+        margin-bottom: 17px;
+    }
+
+    .contact-details {
+        margin-top: 36px;
+        padding: 26px;
+        border-radius: 17px;
+    }
+
+    .contact-details p {
+        margin-bottom: 13px;
+        font-size: 0.96rem;
+        gap: 10px;
+    }
+
+    .vacancy-form {
+        padding: 36px 31px;
+        border-radius: 17px;
+    }
+
+    .vacancy-form h3 {
+        font-size: 1.7rem;
+        margin-bottom: 26px;
+    }
+
+    .vacancy-form h3::after {
+        width: 56px;
+        margin-top: 13px;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 14px 18px;
+        font-size: 0.96rem;
+        border-radius: 10px;
+    }
+
+    .form-group textarea {
+        min-height: 110px;
+    }
+
+    .btn--form {
+        padding: 16px 27px;
+        font-size: 1.02rem;
+        border-radius: 10px;
+    }
+}
+
+/* Small tablet styles (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .vacancy-form-section {
+        padding: 75px 0;
+        background: #2c2c2c;
+    }
+
+    .vacancy-form-section .container {
+        width: 95%;
     }
 
     .form-container {
         grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 40px 30px;
+        gap: 35px;
+        padding: 45px 35px;
         border-radius: 20px;
     }
 
@@ -253,43 +421,111 @@
         text-align: center;
     }
 
+    .form-info h2 {
+        font-size: clamp(1.8rem, 3.6vw, 2.2rem);
+        margin-bottom: 20px;
+    }
+
     .form-info h2::after {
-        margin: 16px auto 0;
+        width: 65px;
+        margin: 13px auto 0;
+    }
+
+    .form-info p {
+        font-size: 1rem;
+        margin-bottom: 16px;
     }
 
     .contact-details {
-        margin-top: 30px;
-        padding: 25px;
+        margin-top: 28px;
+        padding: 24px;
+        border-radius: 16px;
     }
 
     .contact-details p {
         justify-content: center;
         text-align: center;
+        margin-bottom: 12px;
+        font-size: 0.94rem;
     }
 
     .vacancy-form {
-        padding: 35px 30px;
+        padding: 32px 28px;
+        border-radius: 16px;
+    }
+
+    .vacancy-form h3 {
+        font-size: 1.65rem;
+        margin-bottom: 24px;
+    }
+
+    .vacancy-form h3::after {
+        width: 54px;
+        margin-top: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 21px;
     }
 
     .form-group input,
     .form-group textarea {
-        padding: 14px 18px;
+        padding: 13px 17px;
+        font-size: 0.94rem;
+        border-radius: 10px;
+    }
+
+    .form-group textarea {
+        min-height: 105px;
+    }
+
+    .btn--form {
+        padding: 15px 26px;
+        font-size: 1rem;
+        border-radius: 10px;
     }
 }
 
+/* Mobile styles (max-width: 480px) */
+
 @media (max-width: 480px) {
     .vacancy-form-section {
-        padding: 60px 0;
+        background: #2c2c2c;
+        padding: 0;
     }
 
     .vacancy-form-section .container {
-        padding: 0 20px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
     }
 
     .form-container {
         padding: 35px 25px;
-        border-radius: 16px;
+        border: none;
+        border-radius: 0;
         gap: 30px;
+        background: #2c2c2c;
+        grid-template-columns: 1fr;
+    }
+
+    .form-info {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .form-info h2 {
+        margin-bottom: 18px;
+    }
+
+    .form-info h2::after {
+        width: 60px;
+        margin: 12px auto 0;
+    }
+
+    .form-info p {
+        font-size: 0.98rem;
+        margin-bottom: 15px;
     }
 
     .contact-details {
@@ -299,8 +535,11 @@
     }
 
     .contact-details p {
+        justify-content: center;
+        text-align: center;
         font-size: 0.95rem;
         margin-bottom: 12px;
+        gap: 8px;
     }
 
     .vacancy-form {
@@ -313,6 +552,11 @@
         margin-bottom: 25px;
     }
 
+    .vacancy-form h3::after {
+        width: 50px;
+        margin-top: 11px;
+    }
+
     .form-group {
         margin-bottom: 20px;
     }
@@ -322,6 +566,7 @@
         padding: 12px 16px;
         font-size: 0.95rem;
         border-radius: 10px;
+        width: 92%;
     }
 
     .form-group textarea {
@@ -332,6 +577,7 @@
         padding: 16px 25px;
         font-size: 1rem;
         border-radius: 10px;
+        width: 98%;
     }
 }
 
@@ -405,7 +651,7 @@
         padding: 30px 25px;
         border-radius: 16px;
     }
-    
+
     .form-content .form .form-description__title {
         font-size: 1.6rem;
     }

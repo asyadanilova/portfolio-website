@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import bitrix24Service from "../../services/bitrix24";
 import CustomSelect from "./CustomSelect";
 import './Form.css';
@@ -29,6 +29,15 @@ const Form: React.FC<FormProps> = ({ preselectedService, restrictedServices, con
         message: string;
     }>({ type: null, message: '' });
 
+    // Determine available service options
+    const availableServices = [
+        ...((!restrictedServices || restrictedServices.includes('transfer')) ? ['transfer'] : []),
+        ...((!restrictedServices || restrictedServices.includes('vacancy')) ? ['vacancy'] : []),
+        ...((!restrictedServices || restrictedServices.includes('other')) ? ['other'] : [])
+    ];
+    
+    const hasOnlyOneService = availableServices.length === 1;
+
     const createValidationSchema = () => z.object({
         name: z.string()
             .min(1, t('contacts.form.validation.nameRequired'))
@@ -36,7 +45,7 @@ const Form: React.FC<FormProps> = ({ preselectedService, restrictedServices, con
         phone: z.string()
             .min(1, t('contacts.form.validation.phoneRequired'))
             .regex(/^[\+]?[1-9][\d]{0,15}$/, t('contacts.form.validation.phoneInvalid')),
-        service: z.string()
+        service: hasOnlyOneService ? z.string() : z.string()
             .min(1, t('contacts.form.validation.serviceRequired')),
         workExperience: z.string().optional(),
         message: z.string().optional()
@@ -66,12 +75,19 @@ const Form: React.FC<FormProps> = ({ preselectedService, restrictedServices, con
     } = useForm<FormData>({
         resolver: zodResolver(createValidationSchema()),
         defaultValues: {
-            service: preselectedService || ""
+            service: preselectedService || (hasOnlyOneService ? availableServices[0] : "")
         }
     });
 
     const selectedService = watch('service');
     const isVacancySelected = selectedService === 'vacancy';
+
+    // Set service value when there's only one available option
+    useEffect(() => {
+        if (hasOnlyOneService && availableServices.length > 0 && !selectedService) {
+            setValue('service', availableServices[0]);
+        }
+    }, [hasOnlyOneService, availableServices, selectedService, setValue]);
 
     const onSubmit = async (data: FormData) => {
         setIsSubmitting(true);
@@ -126,7 +142,9 @@ const Form: React.FC<FormProps> = ({ preselectedService, restrictedServices, con
     return (
         <form className="form" onSubmit={handleSubmit(onSubmit)} onKeyDown={handleKeyDown}>
             <div className="form-description">
-                <h3 className="form-description__title">{t('contacts.form.title')}</h3>
+                <h3 className="form-description__title">
+                    {(preselectedService === 'vacancy' || selectedService === 'vacancy') ? t('contacts.form.vacancyTitle') : t('contacts.form.title')}
+                </h3>
                 <p className="form-description__text">{t('contacts.form.subtitle')}</p>
             </div>
 
@@ -152,35 +170,37 @@ const Form: React.FC<FormProps> = ({ preselectedService, restrictedServices, con
                 {errors.phone && <span className="form-error">{errors.phone.message}</span>}
             </div>
 
-            <div className="form-field">
-                <Controller
-                    name="service"
-                    control={control}
-                    render={({ field }) => {
-                        const options = [
-                            { value: "", label: t('contacts.form.services.placeholder'), disabled: true, hidden: true },
-                            ...((!restrictedServices || restrictedServices.includes('transfer')) ?
-                                [{ value: "transfer", label: t('contacts.form.services.transfer') }] : []),
-                            ...((!restrictedServices || restrictedServices.includes('vacancy')) ?
-                                [{ value: "vacancy", label: t('contacts.form.services.vacancy') }] : []),
-                            ...((!restrictedServices || restrictedServices.includes('other')) ?
-                                [{ value: "other", label: t('contacts.form.services.other') }] : [])
-                        ];
+            {!hasOnlyOneService && (
+                <div className="form-field">
+                    <Controller
+                        name="service"
+                        control={control}
+                        render={({ field }) => {
+                            const options = [
+                                { value: "", label: t('contacts.form.services.placeholder'), disabled: true, hidden: true },
+                                ...((!restrictedServices || restrictedServices.includes('transfer')) ?
+                                    [{ value: "transfer", label: t('contacts.form.services.transfer') }] : []),
+                                ...((!restrictedServices || restrictedServices.includes('vacancy')) ?
+                                    [{ value: "vacancy", label: t('contacts.form.services.vacancy') }] : []),
+                                ...((!restrictedServices || restrictedServices.includes('other')) ?
+                                    [{ value: "other", label: t('contacts.form.services.other') }] : [])
+                            ];
 
-                        return (
-                            <CustomSelect
-                                value={field.value}
-                                onChange={field.onChange}
-                                placeholder={t('contacts.form.services.placeholder')}
-                                options={options}
-                                error={!!errors.service}
-                                aria-required={true}
-                            />
-                        );
-                    }}
-                />
-                {errors.service && <span className="form-error">{errors.service.message}</span>}
-            </div>
+                            return (
+                                <CustomSelect
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    placeholder={t('contacts.form.services.placeholder')}
+                                    options={options}
+                                    error={!!errors.service}
+                                    aria-required={true}
+                                />
+                            );
+                        }}
+                    />
+                    {errors.service && <span className="form-error">{errors.service.message}</span>}
+                </div>
+            )}
 
             {isVacancySelected && (
                 <div className="form-field">

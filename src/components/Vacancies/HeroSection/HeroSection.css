@@ -189,49 +189,159 @@
     padding: 80px 0;
 }
 
-@media (max-width: 768px) {
+/* Laptop styles (1200px - 1440px) */
+@media (min-width: 1200px) and (max-width: 1440px) {
     .vacancies-hero {
-        min-height: 75vh;
-        padding: 100px 0 60px;
+        min-height: 88vh;
+    }
+
+    .vacancies-hero .container {
+        max-width: 950px;
+        padding: 0 30px;
     }
 
     .vacancies-hero__content {
-        padding: 40px 30px;
+        padding: 55px 38px;
+        border-radius: 22px;
+    }
+
+    .vacancies-hero__logo {
+        margin-bottom: 30px;
+    }
+
+    .vacancies-hero__logo-img {
+        width: 95px;
+    }
+
+    .vacancies-hero__title {
+        font-size: clamp(2.4rem, 3.8vw, 3rem);
+        margin-bottom: 22px;
+    }
+
+    .vacancies-hero__title::after {
+        width: 75px;
+        margin-top: 15px;
+    }
+
+    .vacancies-hero__subtitle {
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+        margin-bottom: 38px;
+        max-width: 480px;
+    }
+
+    .vacancies-hero__btn {
+        padding: 15px 30px;
+        font-size: 0.93rem;
+        letter-spacing: 0.75px;
+    }
+}
+
+/* Large tablet styles (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .vacancies-hero {
+        min-height: 55vh;
+    }
+
+    .vacancies-hero .container {
+        max-width: 900px;
+        padding: 0 25px;
+    }
+
+    .vacancies-hero__content {
+        padding: 50px 35px;
+        border-radius: 21px;
+    }
+
+    .vacancies-hero__logo {
+        margin-bottom: 28px;
+    }
+
+    .vacancies-hero__logo-img {
+        width: 90px;
+    }
+
+    .vacancies-hero__title {
+        font-size: clamp(2.1rem, 3.6vw, 2.8rem);
+        margin-bottom: 21px;
+    }
+
+    .vacancies-hero__title::after {
+        width: 70px;
+        margin-top: 14px;
+    }
+
+    .vacancies-hero__subtitle {
+        font-size: clamp(1.02rem, 1.9vw, 1.22rem);
+        margin-bottom: 36px;
+        max-width: 460px;
+    }
+
+    .vacancies-hero__btn {
+        padding: 15px 29px;
+        font-size: 0.91rem;
+        letter-spacing: 0.7px;
+    }
+}
+
+/* Small tablet styles (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .vacancies-hero {
+        min-height: 80vh;
+    }
+
+    .vacancies-hero .container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .vacancies-hero__content {
+        padding: 45px 32px;
         border-radius: 20px;
     }
 
     .vacancies-hero__logo {
-        margin-bottom: 24px;
+        margin-bottom: 26px;
     }
 
     .vacancies-hero__logo-img {
-        width: 80px;
+        width: 85px;
     }
 
     .vacancies-hero__title {
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
         margin-bottom: 20px;
     }
 
     .vacancies-hero__title::after {
-        width: 60px;
-        margin-top: 12px;
+        width: 65px;
+        margin-top: 13px;
     }
 
     .vacancies-hero__subtitle {
-        margin-bottom: 32px;
-        padding: 0 10px;
+        font-size: clamp(1rem, 2.2vw, 1.2rem);
+        margin-bottom: 34px;
+        max-width: 440px;
+        padding: 0 5px;
     }
 
     .vacancies-hero__btn {
-        padding: 14px 28px;
-        font-size: 0.9rem;
-        letter-spacing: 0.6px;
+        padding: 14px 27px;
+        font-size: 0.89rem;
+        letter-spacing: 0.65px;
     }
 }
 
+/* Mobile styles (max-width: 480px) */
+
 @media (max-width: 480px) {
     .vacancies-hero {
-        padding: 80px 0 50px;
+        min-height: 70vh;
+        padding: 0px;
+    }
+
+    .vacancies-hero .container {
+        max-width: 100%;
+        padding: 0 15px;
     }
 
     .vacancies-hero__content {
@@ -239,17 +349,34 @@
         border-radius: 16px;
     }
 
+    .vacancies-hero__logo {
+        margin-bottom: 22px;
+    }
+
     .vacancies-hero__logo-img {
         width: 70px;
+    }
+
+    .vacancies-hero__title {
+        margin-bottom: 18px;
+    }
+
+    .vacancies-hero__title::after {
+        width: 50px;
+        margin-top: 11px;
+    }
+
+    .vacancies-hero__subtitle {
+        margin-bottom: 30px;
+        padding: 0 8px;
+        max-width: 100%;
     }
 
     .vacancies-hero__btn {
         padding: 12px 24px;
         font-size: 0.85rem;
-    }
-
-    .vacancies-hero__title::after {
-        width: 50px;
+        letter-spacing: 0.5px;
+        max-width: 70%;
     }
 }
 

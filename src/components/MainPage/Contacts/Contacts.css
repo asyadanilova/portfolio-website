@@ -54,7 +54,7 @@
     padding: 40px;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
-    height: 80vh;
+    min-height: fit-content;
 }
 
 .contact__form:hover {
@@ -72,7 +72,7 @@
     border-radius: 24px;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
-    height: 80vh;
+    min-height: fit-content;
 }
 
 .contact__info:hover {
@@ -330,6 +330,7 @@
     .contact__form,
     .contact__info {
         padding: 20px;
+        height: fit-content;
     }
 
     .form-title,

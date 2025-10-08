@@ -81,7 +81,7 @@ const HeroSection: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <Modal isOpen={isModalOpen} onClose={closeModal} />
+            <Modal isOpen={isModalOpen} preselectedService="transfer" onClose={closeModal} />
         </section>
     )
 };

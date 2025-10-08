@@ -156,6 +156,7 @@
         "title": "CONTACT US",
         "form": {
             "title": "Order Transfer",
+            "vacancyTitle": "Submit Vacancy Application",
             "subtitle": "Fill out the form and we will contact you shortly",
             "name": "Your name",
             "phone": "Phone",

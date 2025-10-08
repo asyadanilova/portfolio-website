@@ -19,12 +19,42 @@ a {
 }
 
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Fix for iOS Safari and other mobile browsers */
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: -webkit-fill-available;
+  }
+  
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Ensure footer is always reachable */
+.footer {
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
 }
 
 h1 {
