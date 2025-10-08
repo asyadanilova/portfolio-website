@@ -24,7 +24,7 @@ app.use(cors({
         'https://bvetra.netlify.app'
     ]
 }));
-app.use(json());
+app.use(express.json());
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -32,11 +32,28 @@ const limiter = rateLimit({
     message: 'Too many form submissions, please try again later.'
 });
 
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'OK', message: 'Server is running' });
+});
+
 app.post('/api/submit-form', limiter, async (req, res) => {
     try {
+        console.log('Form submission received:', req.body);
+        
+        // Check if BITRIX24_WEBHOOK_URL is configured
+        if (!process.env.BITRIX24_WEBHOOK_URL) {
+            console.error('BITRIX24_WEBHOOK_URL not configured');
+            return res.status(500).json({
+                success: false,
+                error: 'Server configuration error'
+            });
+        }
+
         const { name, phone, service, workExperience, message, language } = req.body;
 
         if (!name || !phone || !service) {
+            console.log('Missing required fields:', { name: !!name, phone: !!phone, service: !!service });
             return res.status(400).json({
                 success: false,
                 error: 'Missing required fields'
@@ -66,6 +83,8 @@ app.post('/api/submit-form', limiter, async (req, res) => {
             lead.COMMENTS = `Сообщение: ${message}\n\nОтправлено: ${new Date().toISOString()}\nЯзык: ${language}`;
         }
 
+        console.log('Sending to Bitrix24:', lead);
+        
         const bitrixResponse = await fetch(`${process.env.BITRIX24_WEBHOOK_URL}/crm.lead.add.json`, {
             method: 'POST',
             headers: {
@@ -77,12 +96,16 @@ app.post('/api/submit-form', limiter, async (req, res) => {
         });
 
         if (!bitrixResponse.ok) {
-            throw new Error(`Bitrix24 error: ${bitrixResponse.status}`);
+            const errorText = await bitrixResponse.text();
+            console.error('Bitrix24 HTTP error:', bitrixResponse.status, errorText);
+            throw new Error(`Bitrix24 error: ${bitrixResponse.status} - ${errorText}`);
         }
 
         const result = await bitrixResponse.json();
+        console.log('Bitrix24 response:', result);
 
         if (result.error) {
+            console.error('Bitrix24 API error:', result.error, result.error_description);
             throw new Error(`Bitrix24 API error: ${result.error_description}`);
         }
 
@@ -93,14 +116,21 @@ app.post('/api/submit-form', limiter, async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Form submission error:', error);
+        console.error('Form submission error:', error.message);
+        console.error('Full error:', error);
         res.status(500).json({
             success: false,
-            error: 'Failed to submit form'
+            error: 'Failed to submit form',
+            details: process.env.NODE_ENV !== 'production' ? error.message : undefined
         });
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// For Vercel serverless functions, we export the app instead of listening
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
+
+export default app;
