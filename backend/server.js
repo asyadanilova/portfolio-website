@@ -1,118 +1,32 @@
-/* eslint-disable no-undef */
-import express from 'express';
-import cors from 'cors';
-import rateLimit from 'express-rate-limit';
-import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-dotenv.config({ path: join(__dirname, '.env') });
-
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-    origin: function (origin, callback) {
-        // Allow requests with no origin (mobile apps, etc.)
-        if (!origin) return callback(null, true);
-        
-        console.log('CORS request from origin:', origin);
-        
-        const allowedOrigins = [
-            process.env.FRONTEND_URL || 'http://localhost:5173',
-            'http://localhost:5174',
-            'http://localhost:5175',
-            'https://bvetra.netlify.app',
-            'https://bvetra.by',
-            'https://www.bvetra.by'
-        ];
-        
-        // Allow all localhost origins
-        if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
-            return callback(null, true);
-        }
-        
-        // Allow all .netlify.app and .vercel.app subdomains
-        if (origin.match(/^https:\/\/.*\.netlify\.app$/) || origin.match(/^https:\/\/.*\.vercel\.app$/)) {
-            return callback(null, true);
-        }
-        
-        // Check exact matches
-        if (allowedOrigins.includes(origin)) {
-            return callback(null, true);
-        }
-        
-        console.log('CORS blocked origin:', origin);
-        callback(new Error('Not allowed by CORS'));
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    origin: [
+        process.env.FRONTEND_URL || 'http://localhost:5173',
+        'http://localhost:5174',
+        'http://localhost:5175'
+    ]
 }));
 app.use(express.json());
 
-// Request logging middleware
-app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`, {
-        origin: req.get('Origin'),
-        userAgent: req.get('User-Agent')
-    });
-    next();
-});
-
+const rateLimit = require('express-rate-limit');
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 5,
     message: 'Too many form submissions, please try again later.'
 });
 
-// Root endpoint
-app.get('/', (req, res) => {
-    res.json({ 
-        status: 'OK', 
-        message: 'BVetra Backend API is running',
-        endpoints: ['/api/health', '/api/submit-form'],
-        timestamp: new Date().toISOString()
-    });
-});
-
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-    res.json({ 
-        status: 'OK', 
-        message: 'Server is running',
-        env: {
-            nodeEnv: process.env.NODE_ENV,
-            hasBitrixUrl: !!process.env.BITRIX24_WEBHOOK_URL,
-            frontendUrl: process.env.FRONTEND_URL
-        },
-        timestamp: new Date().toISOString()
-    });
-});
-
 app.post('/api/submit-form', limiter, async (req, res) => {
     try {
-        console.log('Form submission received:', req.body);
-        console.log('Request headers:', req.headers);
-
-        // Check if BITRIX24_WEBHOOK_URL is configured
-        if (!process.env.BITRIX24_WEBHOOK_URL) {
-            console.error('BITRIX24_WEBHOOK_URL not configured');
-            return res.status(500).json({
-                success: false,
-                error: 'Server configuration error'
-            });
-        }
-
         const { name, phone, service, workExperience, message, language } = req.body;
 
         if (!name || !phone || !service) {
-            console.log('Missing required fields:', { name: !!name, phone: !!phone, service: !!service });
             return res.status(400).json({
                 success: false,
                 error: 'Missing required fields'
@@ -139,10 +53,8 @@ app.post('/api/submit-form', limiter, async (req, res) => {
         }
 
         if (message) {
-            lead.COMMENTS = `Сообщение: ${message}\n\nОтправлено: ${new Date().toISOString()}\nЯзык: ${language}`;
+            lead.COMMENTS = `Message: ${message}\n\nSubmitted: ${new Date().toISOString()}\nLanguage: ${language}`;
         }
-
-        console.log('Sending to Bitrix24:', lead);
 
         const bitrixResponse = await fetch(`${process.env.BITRIX24_WEBHOOK_URL}/crm.lead.add.json`, {
             method: 'POST',
@@ -155,16 +67,12 @@ app.post('/api/submit-form', limiter, async (req, res) => {
         });
 
         if (!bitrixResponse.ok) {
-            const errorText = await bitrixResponse.text();
-            console.error('Bitrix24 HTTP error:', bitrixResponse.status, errorText);
-            throw new Error(`Bitrix24 error: ${bitrixResponse.status} - ${errorText}`);
+            throw new Error(`Bitrix24 error: ${bitrixResponse.status}`);
         }
 
         const result = await bitrixResponse.json();
-        console.log('Bitrix24 response:', result);
 
         if (result.error) {
-            console.error('Bitrix24 API error:', result.error, result.error_description);
             throw new Error(`Bitrix24 API error: ${result.error_description}`);
         }
 
@@ -175,21 +83,14 @@ app.post('/api/submit-form', limiter, async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Form submission error:', error.message);
-        console.error('Full error:', error);
+        console.error('Form submission error:', error);
         res.status(500).json({
             success: false,
-            error: 'Failed to submit form',
-            details: process.env.NODE_ENV !== 'production' ? error.message : undefined
+            error: 'Failed to submit form'
         });
     }
 });
 
-// For Vercel serverless functions, we export the app instead of listening
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
-}
-
-export default app;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
