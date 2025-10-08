@@ -11,7 +11,7 @@ const __dirname = dirname(__filename);
 
 dotenv.config({ path: join(__dirname, '.env') });
 
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -40,7 +40,7 @@ app.get('/api/health', (req, res) => {
 app.post('/api/submit-form', limiter, async (req, res) => {
     try {
         console.log('Form submission received:', req.body);
-        
+
         // Check if BITRIX24_WEBHOOK_URL is configured
         if (!process.env.BITRIX24_WEBHOOK_URL) {
             console.error('BITRIX24_WEBHOOK_URL not configured');
@@ -84,7 +84,7 @@ app.post('/api/submit-form', limiter, async (req, res) => {
         }
 
         console.log('Sending to Bitrix24:', lead);
-        
+
         const bitrixResponse = await fetch(`${process.env.BITRIX24_WEBHOOK_URL}/crm.lead.add.json`, {
             method: 'POST',
             headers: {
