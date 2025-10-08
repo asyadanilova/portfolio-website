@@ -21,10 +21,26 @@ app.use(cors({
         process.env.FRONTEND_URL || 'http://localhost:5173',
         'http://localhost:5174',
         'http://localhost:5175',
-        'https://bvetra.netlify.app'
-    ]
+        'https://bvetra.netlify.app',
+        'https://bvetra.by',
+        'https://www.bvetra.by',
+        /^https:\/\/.*\.netlify\.app$/,
+        /^https:\/\/.*\.vercel\.app$/
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
+
+// Request logging middleware
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`, {
+        origin: req.get('Origin'),
+        userAgent: req.get('User-Agent')
+    });
+    next();
+});
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -32,9 +48,28 @@ const limiter = rateLimit({
     message: 'Too many form submissions, please try again later.'
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+    res.json({ 
+        status: 'OK', 
+        message: 'BVetra Backend API is running',
+        endpoints: ['/api/health', '/api/submit-form'],
+        timestamp: new Date().toISOString()
+    });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'OK', message: 'Server is running' });
+    res.json({ 
+        status: 'OK', 
+        message: 'Server is running',
+        env: {
+            nodeEnv: process.env.NODE_ENV,
+            hasBitrixUrl: !!process.env.BITRIX24_WEBHOOK_URL,
+            frontendUrl: process.env.FRONTEND_URL
+        },
+        timestamp: new Date().toISOString()
+    });
 });
 
 app.post('/api/submit-form', limiter, async (req, res) => {
