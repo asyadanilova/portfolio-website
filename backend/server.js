@@ -24,7 +24,7 @@ app.use(cors({
         'https://bvetra.netlify.app'
     ]
 }));
-app.use(express.json());
+app.use(json());
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -63,7 +63,7 @@ app.post('/api/submit-form', limiter, async (req, res) => {
         }
 
         if (message) {
-            lead.COMMENTS = `Message: ${message}\n\nSubmitted: ${new Date().toISOString()}\nLanguage: ${language}`;
+            lead.COMMENTS = `Сообщение: ${message}\n\nОтправлено: ${new Date().toISOString()}\nЯзык: ${language}`;
         }
 
         const bitrixResponse = await fetch(`${process.env.BITRIX24_WEBHOOK_URL}/crm.lead.add.json`, {

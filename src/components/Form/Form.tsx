@@ -70,9 +70,7 @@ const Form: React.FC<FormProps> = ({ preselectedService, restrictedServices, con
         formState: { errors },
         watch,
         reset,
-        control,
-        setValue
-    } = useForm<FormData>({
+        control    } = useForm<FormData>({
         resolver: zodResolver(createValidationSchema()),
         defaultValues: {
             service: preselectedService || (hasOnlyOneService ? availableServices[0] : "")
@@ -131,7 +129,6 @@ const Form: React.FC<FormProps> = ({ preselectedService, restrictedServices, con
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
         if (e.key === 'Enter' && !isSubmitting) {
-            // Only trigger if Enter is pressed outside of textarea
             if (e.target !== e.currentTarget.querySelector('textarea')) {
                 e.preventDefault();
                 handleSubmit(onSubmit)();
