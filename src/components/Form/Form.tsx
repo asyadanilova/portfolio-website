@@ -70,7 +70,9 @@ const Form: React.FC<FormProps> = ({ preselectedService, restrictedServices, con
         formState: { errors },
         watch,
         reset,
-        control    } = useForm<FormData>({
+        control,
+        setValue
+    } = useForm<FormData>({
         resolver: zodResolver(createValidationSchema()),
         defaultValues: {
             service: preselectedService || (hasOnlyOneService ? availableServices[0] : "")
