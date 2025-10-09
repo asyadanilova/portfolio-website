@@ -336,7 +336,7 @@
 @media (max-width: 480px) {
     .vacancies-hero {
         min-height: 70vh;
-        padding: 0px;
+        padding: 20px 0;
     }
 
     .vacancies-hero .container {
