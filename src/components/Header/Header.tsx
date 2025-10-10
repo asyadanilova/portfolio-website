@@ -167,7 +167,7 @@ const Header: React.FC = () => {
 
                     <div className="social-icons desktop-social">
                         <a
-                            href="https://t.me/your_telegram"
+                            href="https://t.me/Yana_BVetra"
                             className="social-link"
                             target="_blank"
                             rel="noopener noreferrer"
