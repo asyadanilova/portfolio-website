@@ -17,17 +17,33 @@
 .header__container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  position: relative;
+}
+
+.header--mobile-open {
+  z-index: 1200;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
+}
+
+/* Desktop logo positioning */
+.desktop-logo {
   margin-left: 10vw;
   margin-right: auto;
+}
+
+/* Mobile logo positioning - hidden by default, shown on mobile */
+.mobile-logo {
+  display: none;
 }
 
 .logo__img {
@@ -156,6 +172,7 @@
   z-index: 1200;
   border-radius: 6px;
   transition: background-color 0.3s ease;
+  position: relative;
 }
 
 .burger-menu:hover {
@@ -180,10 +197,10 @@
 
 .mobile-nav {
   position: fixed;
-  top: 0;
+  top: 90px; /* Start below the header */
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 90px); /* Account for header height */
   background-color: rgba(26, 26, 26, 0.95);
   backdrop-filter: blur(10px);
   transform: translateX(-100%);
@@ -208,7 +225,7 @@
 }
 
 .mobile-nav-content {
-  padding: 100px 2rem 2rem;
+  padding: 2rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -437,7 +454,7 @@
     display: flex;
     width: 38px;
     height: 38px;
-    margin-right: 4vw;
+    margin-left: 4vw;
   }
 
   .burger-icon {
@@ -445,12 +462,20 @@
   }
 
   .header-right {
-    gap: 0.8rem;
-    margin-right: 2vw;
+    display: none;
+  }
+  
+  .desktop-logo {
+    display: none;
+  }
+  
+  .mobile-logo {
+    display: flex;
+    margin-right: 4vw;
   }
 
   .mobile-nav-content {
-    padding: 90px 1.8rem 1.8rem;
+    padding: 2rem 1.8rem 1.8rem;
   }
 
   .mobile-nav__link {
@@ -485,7 +510,7 @@
   }
 
   .logo {
-    margin-left: 4vw;
+    margin-right: 4vw;
   }
 
   .logo__img {
@@ -503,8 +528,7 @@
     display: flex;
     width: 35px;
     height: 35px;
-    margin-right: 4vw;
-    margin-left: auto;
+    margin-left: 4vw;
   }
 
   .burger-icon {
@@ -515,8 +539,17 @@
     display: none;
   }
 
+  .desktop-logo {
+    display: none;
+  }
+  
+  .mobile-logo {
+    display: flex;
+    margin-right: 4vw;
+  }
+
   .mobile-nav-content {
-    padding: 80px 1.5rem 1.5rem;
+    padding: 2rem 1.5rem 1.5rem;
     height: fit-content;
   }
 

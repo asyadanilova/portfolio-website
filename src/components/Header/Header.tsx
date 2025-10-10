@@ -79,127 +79,143 @@ const Header: React.FC = () => {
     }, [isMobileMenuOpen]);
 
     return (
-        <header className="header">
-            <div className="container header__container">
-                <Link to="/" className="logo">
-                    <img
-                        src="/logo/logo.webp"
-                        alt={t('logoAlt')}
-                        className="logo__img"
-                        width="100"
-                        height="20"
-                    />
-                </Link>
+        <>
+            <header className={`header ${isMobileMenuOpen ? 'header--mobile-open' : ''}`}>
+                <div className="container header__container">
+                    {/* Mobile burger menu - left side */}
+                    <button
+                        className={`burger-menu ${isMobileMenuOpen ? 'active' : ''}`}
+                        onClick={toggleMobileMenu}
+                        aria-label={isMobileMenuOpen ? t('closeMobileMenu') : t('openMobileMenu')}
+                        aria-expanded={isMobileMenuOpen}
+                    >
+                        <i className="fas fa-bars burger-icon" aria-hidden="true"></i>
+                    </button>
 
-                <nav className="nav desktop-nav" aria-label={t('mainMenuAriaLabel')}>
-                    <ul className="nav__list">
-                        <li className="nav__item">
-                            <a
-                                href="#about"
-                                className="nav__link"
-                                onClick={(e) => handleNavLinkClick(e, 'about')}
-                            >
-                                {t('nav.about')}
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a
-                                href="#services"
-                                className="nav__link"
-                                onClick={(e) => handleNavLinkClick(e, 'services')}
-                            >
-                                {t('nav.services')}
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a
-                                href="#cars"
-                                className="nav__link"
-                                onClick={(e) => handleNavLinkClick(e, 'cars')}
-                            >
-                                {t('nav.fleet')}
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a
-                                href="#drivers"
-                                className="nav__link"
-                                onClick={(e) => handleNavLinkClick(e, 'drivers')}
-                            >
-                                {t('nav.drivers')}
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a
-                                href="#vacancies"
-                                className="nav__link"
-                                onClick={(e) => handleNavLinkClick(e, 'vacancies')}
-                            >
-                                {t('nav.vacancies')}
-                            </a>
-                        </li>
-                        <li className="nav__item">
-                            <a
-                                href="#contact"
-                                className="nav__link"
-                                onClick={(e) => handleNavLinkClick(e, 'contact')}
-                            >
-                                {t('nav.contact')}
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                    {/* Desktop navigation and logo - center/left */}
+                    <Link to="/" className="logo desktop-logo">
+                        <img
+                            src="/logo/logo.webp"
+                            alt={t('logoAlt')}
+                            className="logo__img"
+                            width="100"
+                            height="20"
+                        />
+                    </Link>
 
-                <button
-                    className={`burger-menu ${isMobileMenuOpen ? 'active' : ''}`}
-                    onClick={toggleMobileMenu}
-                    aria-label={isMobileMenuOpen ? t('closeMobileMenu') : t('openMobileMenu')}
-                    aria-expanded={isMobileMenuOpen}
-                >
-                    <i className="fas fa-bars burger-icon" aria-hidden="true"></i>
-                </button>
+                    <nav className="nav desktop-nav" aria-label={t('mainMenuAriaLabel')}>
+                        <ul className="nav__list">
+                            <li className="nav__item">
+                                <a
+                                    href="#about"
+                                    className="nav__link"
+                                    onClick={(e) => handleNavLinkClick(e, 'about')}
+                                >
+                                    {t('nav.about')}
+                                </a>
+                            </li>
+                            <li className="nav__item">
+                                <a
+                                    href="#services"
+                                    className="nav__link"
+                                    onClick={(e) => handleNavLinkClick(e, 'services')}
+                                >
+                                    {t('nav.services')}
+                                </a>
+                            </li>
+                            <li className="nav__item">
+                                <a
+                                    href="#cars"
+                                    className="nav__link"
+                                    onClick={(e) => handleNavLinkClick(e, 'cars')}
+                                >
+                                    {t('nav.fleet')}
+                                </a>
+                            </li>
+                            <li className="nav__item">
+                                <a
+                                    href="#drivers"
+                                    className="nav__link"
+                                    onClick={(e) => handleNavLinkClick(e, 'drivers')}
+                                >
+                                    {t('nav.drivers')}
+                                </a>
+                            </li>
+                            <li className="nav__item">
+                                <a
+                                    href="#vacancies"
+                                    className="nav__link"
+                                    onClick={(e) => handleNavLinkClick(e, 'vacancies')}
+                                >
+                                    {t('nav.vacancies')}
+                                </a>
+                            </li>
+                            <li className="nav__item">
+                                <a
+                                    href="#contact"
+                                    className="nav__link"
+                                    onClick={(e) => handleNavLinkClick(e, 'contact')}
+                                >
+                                    {t('nav.contact')}
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 
-                <div className="header-right">
-                    <div className="phone desktop-phone">
-                        <i className="fas fa-phone phone__icon" aria-hidden="true"></i>
-                        <a href="tel:+375297041455" className="phone__link">+375 (29) 704-14-55</a>
+                    {/* Desktop header right section */}
+                    <div className="header-right">
+                        <div className="phone desktop-phone">
+                            <i className="fas fa-phone phone__icon" aria-hidden="true"></i>
+                            <a href="tel:+375297041455" className="phone__link">+375 (29) 704-14-55</a>
+                        </div>
+
+                        <div className="social-icons desktop-social">
+                            <a
+                                href="https://t.me/Yana_BVetra"
+                                className="social-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Telegram"
+                            >
+                                <i className="fab fa-telegram" aria-hidden="true"></i>
+                            </a>
+                            <a
+                                href="https://instagram.com/bvet.ra"
+                                className="social-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Instagram"
+                            >
+                                <i className="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a
+                                href="https://tiktok.com/@bvetra.by"
+                                className="social-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="TikTok"
+                            >
+                                <i className="fab fa-tiktok" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <div className="desktop-language-switcher">
+                            <LanguageSwitcher />
+                        </div>
                     </div>
 
-                    <div className="social-icons desktop-social">
-                        <a
-                            href="https://t.me/Yana_BVetra"
-                            className="social-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Telegram"
-                        >
-                            <i className="fab fa-telegram" aria-hidden="true"></i>
-                        </a>
-                        <a
-                            href="https://instagram.com/bvet.ra"
-                            className="social-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram"
-                        >
-                            <i className="fab fa-instagram" aria-hidden="true"></i>
-                        </a>
-                        <a
-                            href="https://tiktok.com/@bvetra.by"
-                            className="social-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="TikTok"
-                        >
-                            <i className="fab fa-tiktok" aria-hidden="true"></i>
-                        </a>
-                    </div>
-
-                    <div className="desktop-language-switcher">
-                        <LanguageSwitcher />
-                    </div>
+                    {/* Mobile logo - right side */}
+                    <Link to="/" className="logo mobile-logo" onClick={closeMobileMenu}>
+                        <img
+                            src="/logo/logo.webp"
+                            alt={t('logoAlt')}
+                            className="logo__img"
+                            width="100"
+                            height="20"
+                        />
+                    </Link>
                 </div>
-            </div>
+            </header>
 
             <div className={`mobile-nav ${isMobileMenuOpen ? 'active' : ''}`}>
                 <nav className="mobile-nav-content" aria-label={t('mobileMenuAriaLabel')}>
@@ -302,7 +318,7 @@ const Header: React.FC = () => {
                     </div>
                 </nav>
             </div>
-        </header>
+        </>
     );
 };
 
